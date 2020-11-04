@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+         http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+    <bean id="userDao" class="dao.impl.UserDaoImpl"/>
+    <bean id="logAspect" class="aspect.LogAspect"/>
+    <bean id="logAspect1" class="aspect.LogAspect1"/>
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="userDaoPointCut" expression="execution(public void dao.impl.UserDaoImpl.getUser(..))"/>-->
+        <!--<aop:aspect id="logAspect" ref="logAspect">-->
+            <!--<aop:before method="beforeAdvice" pointcut-ref="userDaoPointCut"/>-->
+            <!--<aop:after method="afterAdvice" pointcut-ref="userDaoPointCut"/>-->
+            <!--<aop:around method="aroundAdvice" pointcut-ref="userDaoPointCut"/>-->
+            <!--<aop:after-throwing method="exceptionAdvice" pointcut-ref="userDaoPointCut" throwing="e"/>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+    <context:component-scan base-package="aspect"/>
+    <aop:aspectj-autoproxy/>
+</beans>
+
